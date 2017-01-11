@@ -1,0 +1,2179 @@
+/-----------------------------------------
+| State-action rewards from Q-Learning
+\-----------------------------------------
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'right'
+p7
+sg7
+S'left'
+p8
+sg8
+Nss.
+ -- forward : 0.22
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'forward'
+p7
+sS'right'
+p8
+S'left'
+p9
+sg9
+Nss.
+ -- forward : -4.52
+ -- right : 0.95
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+g7
+sg7
+g7
+ss.
+ -- forward : 0.00
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.39
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+S'forward'
+p8
+sS'left'
+p9
+g7
+ss.
+ -- forward : 0.23
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+g7
+sS'left'
+p8
+S'forward'
+p9
+ss.
+ -- forward : -19.83
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+g7
+sS'left'
+p8
+S'forward'
+p9
+ss.
+ -- forward : 0.60
+ -- right : -0.22
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+g7
+sS'left'
+p8
+g8
+ss.
+ -- forward : 0.00
+ -- right : 1.28
+ -- left : 0.00
+ -- None : 0.18
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+S'forward'
+p9
+sg7
+g7
+ss.
+ -- forward : 0.00
+ -- right : 0.00
+ -- left : 0.25
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+S'forward'
+p9
+sg7
+g8
+ss.
+ -- forward : 1.40
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+Nsg7
+g7
+ss.
+ -- forward : 0.00
+ -- right : 0.00
+ -- left : -7.72
+ -- None : 1.74
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+S'forward'
+p9
+sg7
+g9
+ss.
+ -- forward : -19.60
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+g7
+sS'left'
+p8
+Nss.
+ -- forward : -4.88
+ -- right : 0.00
+ -- left : -5.37
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+g8
+sg7
+Nss.
+ -- forward : 0.62
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+g8
+sg7
+S'forward'
+p9
+ss.
+ -- forward : -20.45
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+Nsg7
+S'forward'
+p9
+ss.
+ -- forward : 0.87
+ -- right : 0.00
+ -- left : -0.04
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'forward'
+p7
+sS'right'
+p8
+S'left'
+p9
+sg9
+g7
+ss.
+ -- forward : -20.05
+ -- right : -10.21
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+Nsg7
+g8
+ss.
+ -- forward : 0.00
+ -- right : 2.02
+ -- left : -5.10
+ -- None : 1.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+S'left'
+p8
+sg8
+g8
+ss.
+ -- forward : -0.04
+ -- right : 0.05
+ -- left : 0.16
+ -- None : -4.01
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'right'
+p7
+sg7
+S'forward'
+p8
+sS'left'
+p9
+g7
+ss.
+ -- forward : 0.00
+ -- right : 0.81
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'forward'
+p7
+sS'right'
+p8
+NsS'left'
+p9
+g7
+ss.
+ -- forward : -0.10
+ -- right : 0.00
+ -- left : -9.68
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'right'
+p7
+sg7
+NsS'left'
+p8
+g8
+ss.
+ -- forward : -5.42
+ -- right : 0.87
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+NsS'left'
+p8
+g7
+ss.
+ -- forward : -4.90
+ -- right : 0.89
+ -- left : -4.72
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'forward'
+p7
+sS'right'
+p8
+g8
+sS'left'
+p9
+Nss.
+ -- forward : -5.29
+ -- right : -0.43
+ -- left : -4.75
+ -- None : 1.58
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'forward'
+p7
+sS'right'
+p8
+S'left'
+p9
+sg9
+g8
+ss.
+ -- forward : 0.00
+ -- right : 0.00
+ -- left : 0.00
+ -- None : -2.99
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'forward'
+p7
+sS'right'
+p8
+NsS'left'
+p9
+g7
+ss.
+ -- forward : -19.84
+ -- right : -9.69
+ -- left : -20.05
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+S'left'
+p8
+sg8
+S'forward'
+p9
+ss.
+ -- forward : 0.00
+ -- right : 0.65
+ -- left : 0.39
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+NsS'left'
+p8
+g8
+ss.
+ -- forward : 0.17
+ -- right : 0.00
+ -- left : 0.60
+ -- None : -2.25
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'right'
+p7
+sg7
+S'forward'
+p8
+sS'left'
+p9
+Nss.
+ -- forward : -20.44
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+S'left'
+p8
+sg8
+S'forward'
+p9
+ss.
+ -- forward : -19.64
+ -- right : -10.16
+ -- left : -20.44
+ -- None : 1.23
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+g7
+sS'left'
+p8
+Nss.
+ -- forward : 1.14
+ -- right : 0.00
+ -- left : 0.00
+ -- None : -2.67
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+g7
+sg7
+g8
+ss.
+ -- forward : -5.33
+ -- right : 0.02
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+g7
+sg7
+Nss.
+ -- forward : 0.00
+ -- right : 1.27
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+S'forward'
+p8
+sS'left'
+p9
+g8
+ss.
+ -- forward : 0.00
+ -- right : 0.00
+ -- left : 1.24
+ -- None : -4.33
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'right'
+p7
+sg7
+NsS'left'
+p8
+Nss.
+ -- forward : 1.02
+ -- right : 0.00
+ -- left : -9.57
+ -- None : -3.76
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+g7
+sS'left'
+p8
+g8
+ss.
+ -- forward : 0.00
+ -- right : 0.76
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+Nsg7
+g8
+ss.
+ -- forward : 0.00
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 1.20
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+S'forward'
+p9
+sg7
+g7
+ss.
+ -- forward : 0.00
+ -- right : 0.00
+ -- left : -20.33
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'forward'
+p7
+sS'right'
+p8
+NsS'left'
+p9
+g9
+ss.
+ -- forward : 0.76
+ -- right : 0.00
+ -- left : -9.93
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'forward'
+p7
+sS'right'
+p8
+g7
+sS'left'
+p9
+g9
+ss.
+ -- forward : 0.00
+ -- right : 1.54
+ -- left : -20.11
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'forward'
+p7
+sS'right'
+p8
+g7
+sS'left'
+p9
+Nss.
+ -- forward : 0.00
+ -- right : 0.00
+ -- left : -19.80
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+Nsg7
+g7
+ss.
+ -- forward : 0.66
+ -- right : 0.95
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+NsS'left'
+p8
+Nss.
+ -- forward : -0.08
+ -- right : 0.08
+ -- left : -0.08
+ -- None : -4.91
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+S'forward'
+p8
+sS'left'
+p9
+Nss.
+ -- forward : 0.09
+ -- right : 0.00
+ -- left : 1.18
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'right'
+p7
+sg7
+S'forward'
+p8
+sS'left'
+p9
+g8
+ss.
+ -- forward : -19.52
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'right'
+p7
+sg7
+S'left'
+p8
+sg8
+Nss.
+ -- forward : -4.60
+ -- right : 0.00
+ -- left : -20.25
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'forward'
+p7
+sS'right'
+p8
+g8
+sS'left'
+p9
+Nss.
+ -- forward : 1.74
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'forward'
+p7
+sS'right'
+p8
+NsS'left'
+p9
+g8
+ss.
+ -- forward : 0.21
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'right'
+p7
+sg7
+S'forward'
+p8
+sS'left'
+p9
+g8
+ss.
+ -- forward : -0.06
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+NsS'left'
+p8
+g7
+ss.
+ -- forward : 0.00
+ -- right : 0.99
+ -- left : 0.48
+ -- None : -2.48
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'forward'
+p7
+sS'right'
+p8
+NsS'left'
+p9
+g8
+ss.
+ -- forward : -7.56
+ -- right : 0.60
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+S'left'
+p8
+sg8
+g8
+ss.
+ -- forward : -4.80
+ -- right : 1.61
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+g7
+sg7
+S'forward'
+p9
+ss.
+ -- forward : 0.30
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'forward'
+p7
+sS'right'
+p8
+S'left'
+p9
+sg9
+g9
+ss.
+ -- forward : -5.33
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'right'
+p7
+sg7
+NsS'left'
+p8
+Nss.
+ -- forward : 0.00
+ -- right : 0.00
+ -- left : -29.31
+ -- None : 1.29
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'right'
+p7
+sg7
+g7
+sS'left'
+p8
+g8
+ss.
+ -- forward : -5.46
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'forward'
+p7
+sS'right'
+p8
+S'left'
+p9
+sg9
+g9
+ss.
+ -- forward : 0.13
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+S'left'
+p8
+sg8
+Nss.
+ -- forward : 0.00
+ -- right : 0.43
+ -- left : 1.15
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+NsS'left'
+p8
+S'forward'
+p9
+ss.
+ -- forward : 0.37
+ -- right : 0.00
+ -- left : 0.85
+ -- None : -2.48
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'right'
+p7
+sg7
+S'forward'
+p8
+sS'left'
+p9
+Nss.
+ -- forward : 1.57
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'forward'
+p7
+sS'right'
+p8
+NsS'left'
+p9
+Nss.
+ -- forward : 1.50
+ -- right : 0.02
+ -- left : -18.32
+ -- None : -2.42
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+S'forward'
+p9
+sg7
+Nss.
+ -- forward : 0.36
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.36
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+S'forward'
+p9
+sg7
+Nss.
+ -- forward : 0.00
+ -- right : 0.54
+ -- left : 0.00
+ -- None : 0.94
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+S'forward'
+p8
+sS'left'
+p9
+g9
+ss.
+ -- forward : 0.00
+ -- right : 0.00
+ -- left : 1.17
+ -- None : -2.62
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'forward'
+p7
+sS'right'
+p8
+g8
+sS'left'
+p9
+g7
+ss.
+ -- forward : -19.71
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'forward'
+p7
+sS'right'
+p8
+g7
+sS'left'
+p9
+Nss.
+ -- forward : 1.03
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+g7
+sg7
+g8
+ss.
+ -- forward : 0.44
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+Nsg7
+S'forward'
+p9
+ss.
+ -- forward : -29.66
+ -- right : 0.00
+ -- left : -20.36
+ -- None : 1.20
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'right'
+p7
+sg7
+g7
+sS'left'
+p8
+Nss.
+ -- forward : -4.78
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+S'forward'
+p8
+sS'left'
+p9
+g9
+ss.
+ -- forward : 0.00
+ -- right : 0.00
+ -- left : -19.99
+ -- None : 1.69
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+NsS'left'
+p8
+Nss.
+ -- forward : -9.62
+ -- right : 0.92
+ -- left : -9.95
+ -- None : 1.53
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'right'
+p7
+sg7
+NsS'left'
+p8
+g7
+ss.
+ -- forward : -4.97
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+S'left'
+p8
+sg8
+Nss.
+ -- forward : -5.08
+ -- right : 1.22
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'forward'
+p7
+sS'right'
+p8
+S'left'
+p9
+sg9
+Nss.
+ -- forward : 0.87
+ -- right : 0.00
+ -- left : -9.59
+ -- None : -2.68
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+Nsg7
+Nss.
+ -- forward : -9.07
+ -- right : 1.85
+ -- left : -10.04
+ -- None : 0.82
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+Nsg7
+Nss.
+ -- forward : 0.24
+ -- right : 0.60
+ -- left : 1.27
+ -- None : 0.37
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'right'
+p7
+sg7
+NsS'left'
+p8
+g8
+ss.
+ -- forward : -0.00
+ -- right : 0.00
+ -- left : -10.30
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+S'forward'
+p8
+sS'left'
+p9
+g8
+ss.
+ -- forward : 0.00
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 1.43
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+g8
+sg7
+Nss.
+ -- forward : -5.15
+ -- right : 0.73
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'right'
+p7
+sg7
+S'forward'
+p8
+sS'left'
+p9
+g9
+ss.
+ -- forward : -0.23
+ -- right : 0.55
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'forward'
+p7
+sS'right'
+p8
+NsS'left'
+p9
+Nss.
+ -- forward : -8.00
+ -- right : 0.23
+ -- left : -10.40
+ -- None : 1.84
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'forward'
+p7
+sS'right'
+p8
+NsS'left'
+p9
+g9
+ss.
+ -- forward : -5.28
+ -- right : 0.20
+ -- left : -4.52
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+g8
+sg7
+g8
+ss.
+ -- forward : 0.83
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'forward'
+p7
+sS'right'
+p8
+g7
+sS'left'
+p9
+g8
+ss.
+ -- forward : -19.86
+ -- right : 0.00
+ -- left : -20.29
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+g7
+sg7
+Nss.
+ -- forward : -0.03
+ -- right : 1.13
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'right'
+p7
+sg7
+S'left'
+p8
+sg8
+g7
+ss.
+ -- forward : 0.00
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 1.22
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+g8
+sg7
+g7
+ss.
+ -- forward : -5.24
+ -- right : 0.24
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+NsS'left'
+p8
+S'forward'
+p9
+ss.
+ -- forward : -30.34
+ -- right : -9.76
+ -- left : -20.10
+ -- None : 1.54
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+g8
+sg7
+g7
+ss.
+ -- forward : 0.00
+ -- right : 0.00
+ -- left : 0.96
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+S'forward'
+p9
+sg7
+g9
+ss.
+ -- forward : 0.00
+ -- right : 0.80
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+NsS'left'
+p8
+g8
+ss.
+ -- forward : 0.00
+ -- right : 0.00
+ -- left : -7.93
+ -- None : 1.68
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+S'forward'
+p7
+sS'right'
+p8
+g8
+sS'left'
+p9
+g7
+ss.
+ -- forward : 1.01
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'forward'
+p7
+sS'right'
+p8
+g7
+sS'left'
+p9
+g7
+ss.
+ -- forward : -19.57
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'forward'
+p7
+sS'right'
+p8
+g8
+sS'left'
+p9
+g9
+ss.
+ -- forward : -4.88
+ -- right : 0.67
+ -- left : 0.00
+ -- None : 0.00
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+S'left'
+p7
+sS'right'
+p8
+g7
+sg7
+S'forward'
+p9
+ss.
+ -- forward : -20.08
+ -- right : 0.00
+ -- left : 0.00
+ -- None : 1.75
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'red'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+S'forward'
+p8
+sS'left'
+p9
+Nss.
+ -- forward : -20.37
+ -- right : 0.44
+ -- left : -20.30
+ -- None : 1.79
+
+(dp1
+S'inputs'
+p2
+(dp3
+S'light'
+p4
+S'green'
+p5
+sS'oncoming'
+p6
+NsS'right'
+p7
+S'left'
+p8
+sg8
+g7
+ss.
+ -- forward : -0.28
+ -- right : 1.17
+ -- left : 0.00
+ -- None : 0.00
+

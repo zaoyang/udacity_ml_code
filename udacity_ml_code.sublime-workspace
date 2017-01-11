@@ -1,0 +1,264 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"d",
+				"def\tFunction"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "# ------------------------------------------------------------------\n\n#\n#   Bayes Optimal Classifier\n#\n#   In this quiz we will compute the optimal label for a second missing word in a row\n#   based on the possible words that could be in the first blank\n#\n#   Finish the procedurce, LaterWords(), below\n#\n#   You may want to import your code from the previous programming exercise!\n#\n\nfrom __future__ import division\n\nsample_memo = '''\nMilt, we're gonna need to go ahead and move you downstairs into storage B. We have some new people coming in, and we need all the space we can get. So if you could just go ahead and pack up your stuff and move it down there, that would be terrific, OK?\nOh, and remember: next Friday... is Hawaiian shirt day. So, you know, if you want to, go ahead and wear a Hawaiian shirt and jeans.\nOh, oh, and I almost forgot. Ahh, I'm also gonna need you to go ahead and come in on Sunday, too...\nHello Peter, whats happening? Ummm, I'm gonna need you to go ahead and come in tomorrow. So if you could be here around 9 that would be great, mmmk... oh oh! and I almost forgot ahh, I'm also gonna need you to go ahead and come in on Sunday too, kay. We ahh lost some people this week and ah, we sorta need to play catch up.\n'''\n\ncorrupted_memo = '''\nYeah, I'm gonna --- you to go ahead --- --- complain about this. Oh, and if you could --- --- and sit at the kids' table, that'd be ---\n'''\n\ndata_list = sample_memo.strip().split()\n\nwords_to_guess = [\"ahead\", \"could\"]\n\ndef countWordPlusDistance(sample, word, distance):\n    afterWordDict = {}\n    afterWordProb = {}\n    sumAll = 0\n    for idx, sampleWord in enumerate(sample):\n        if word == sampleWord:\n            wordAfter = sample[idx + distance]\n\n            sumAll += 1\n            if distance == 1:\n                if afterWordDict.get(wordAfter) == None:\n                    afterWordDict[wordAfter] = 1\n                else:\n                    afterWordDict[wordAfter] = afterWordDict.get(wordAfter) + 1\n            elif distance == 2:\n                wordBeforeAfter = sample[idx + distance-1]\n\n                if afterWordDict.get(wordBeforeAfter + \" \" + wordAfter) == None:\n                    afterWordDict[wordBeforeAfter + \" \" + wordAfter] = 1\n                else:\n                    afterWordDict[wordBeforeAfter + \" \" + wordAfter] = afterWordDict.get(wordBeforeAfter + \" \" + wordAfter) + 1\n\n    for word in afterWordDict.keys():\n        afterWordProb[word] = afterWordDict.get(word) / sumAll\n\n    afterWordDict = sorted(afterWordDict.items(), key=lambda x: x[1], reverse=True)\n    afterWordProb = sorted(afterWordProb.items(), key=lambda x: x[1], reverse=True)\n\n    return (afterWordDict, afterWordProb)\n\n\n\ndef LaterWords(sample, word, distance):\n    '''@param sample: a sample of text to draw from\n    @param word: a word occuring before a corrupted sequence\n    @param distance: how many words later to estimate (i.e. 1 for the next word, 2 for the word after that)\n    @returns: a single word which is the most likely possibility\n    '''\n\n    sampleText = sample.strip().split()\n\n    # TODO: Given a word, collect the relative probabilities of possible following words\n    # from @sample. You may want to import your code from the maximum likelihood exercise.\n    tuple = countWordPlusDistance(sampleText, word, 1)\n    afterWordDict = tuple[0]\n    afterWordProb = tuple[1]\n\n\n    # print afterWordDict\n    # print afterWordProb\n    # print\n    #\n\n    # # TODO: Repeat the above process--for each distance beyond 1, evaluate the words that\n    # # might come after each word, and combine them weighting by relative probability\n    # # into an estimate of what might appear next.\n\n    # add all the probablities for a given\n    tuple = countWordPlusDistance(sampleText, word, distance)\n    splitWordDict = tuple[0]\n    splitWordProb = tuple[1]\nList Packages\n    print splitWordDict\n    print splitWordProb\n    print\n\n    splitList = []\n    for word in splitWordDict:\n        splitWord = word[0].split()\n        splitList.append(splitWord[1])\n\n    finalProbDict ={}\n    for word in splitList:\n\n        for splitProb in splitWordProb:\n            if(splitProb[0].split()[1] == word):\n                if finalProbDict.get(word) == None:\n                    finalProbDict[word] = splitProb[1]\n                else:\n                    finalProbDict[word] += splitProb[1]\n\n\n    finalProbDictSorted = sorted(finalProbDict.items(), key=lambda x: x[1], reverse=True)\n\n    return max(finalProbDictSorted, key= lambda x: x[1])[0]\n\n\nif __name__ == '__main__':\n\n    print LaterWords(sample_memo,\"ahead\",2)\n    print LaterWords(sample_memo,\"could\",2)\n    print LaterWords(sample_memo, \"and\", 2)\n\n    print LaterWords(sample_memo, \"stuff\", 2)\n    print LaterWords(sample_memo, \"gonna\", 2)\n    print LaterWords(sample_memo, \"be\", 2)\n    print LaterWords(sample_memo, \"forgot\", 2)\n",
+			"file": "gaussianNB/prediction.py",
+			"file_size": 4848,
+			"file_write_time": 131244374750000000,
+			"settings":
+			{
+				"buffer_size": 4861,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/zaoyang/Dropbox (Personal)/Code/maildir/explore_enron_data.py",
+			"settings":
+			{
+				"buffer_size": 602,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 87.0,
+		"last_filter": "package control: insta",
+		"selected_items":
+		[
+			[
+				"package control: insta",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"List Packages",
+			"Install Package",
+			"sublime.version()"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/zaoyang/Dropbox (Personal)/Code/udacity_ml_code",
+		"/Users/zaoyang/Dropbox (Personal)/Code/udacity_ml_code/decisionTree",
+		"/Users/zaoyang/Dropbox (Personal)/Code/udacity_ml_code/decisionTree/codingDecisionTree",
+		"/Users/zaoyang/Dropbox (Personal)/Code/udacity_ml_code/gaussianNB"
+	],
+	"file_history":
+	[
+		"/Users/zaoyang/Dropbox (Personal)/Code/udacity_ml_code/gaussianNB/maxium_likelihood.py",
+		"/Users/zaoyang/Dropbox (Personal)/Code/udacity_ml_code/decisionTree/codingDecisionTree/studentMain.py",
+		"/Users/zaoyang/Dropbox (Personal)/Code/udacity_ml_code/decisionTree/codingDecisionTree/classifyDT.py"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"print splitWordDict"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "gaussianNB/prediction.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4861,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3853,
+								3853
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1236.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/zaoyang/Dropbox (Personal)/Code/maildir/explore_enron_data.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 602,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "udacity_ml_code.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 255.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
