@@ -11861,7 +11861,11 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: The smart cab move in the simulation most of the time, but it does move occasionally. It just has no action taken. However, there is positive and negative feedback for the driving agent. For example, "No action take rewarded -5.97, no action take rewarded 1.7, rewarded 2.5, rewarded 2.12, rewarded -4.95. The light changes allows the cars to move and then there are corresponding negative and positive rewards. When "there is a green light with no oncoming traffic" and there is no action, then the car should go but they don't.  </strong></p>
+<p>**Answer: The smart cab move in the simulation most of the time, but it does move occasionally. It just has no action taken. However, there is positive and negative feedback for the driving agent. For example, "No action take rewarded -5.97, no action take rewarded 1.7, rewarded 2.5, rewarded 2.12, rewarded -4.95. The light changes allows the cars to move and then there are corresponding negative and positive rewards. When "there is a green light with no oncoming traffic" and there is no action, then the car should go but they don't.</p>
+<p>The rewards when there is a green light with other traffic. The agent first has to avoid hitting any other car and then do go to the right waypoint. If it does both. It gets a reward of 2 - penalty, where penalty is a float between 0 and 1. If there is a violation, it's classified under minor/major violation and minor/major accident.</p>
+<p>If there isn't traffic. The optimal policy for the agent is to just follow the way point toward the goal. The reward for that is 2 - penalty.</p>
+<p>If there is a red light. The rewards are dependent on what violation the agent receives. If you go cross the right light it's a violation. If you cross the right light and hit another agent then it's an accident. The rewards vary, but minor violations are -5, major violations are 10, minor accidents are -20, major accidents are -40.</p>
+<p>**</p>
 
 </div>
 </div>
@@ -11901,7 +11905,7 @@ div#notebook {
 <p>learning - you can set epsilon or alpha for the exploration or learning rate.</p>
 <p>enforce_deadline - you can set the deadline metrics for the agent.</p>
 <p>In the environment.py Python file, what Environment class function is called when an agent performs an action?</p>
-<p>For the simulation, you can set update_delay and that sets the time between actions. Therefore you can have a lot of time or very little time.</p>
+<p>When the environment class is called, the agent calls env.act(). The function definition is here: def act(self, agent, action):</p>
 <p>In the simulator.py Python file, what is the difference between the 'render_text()' function and the 'render()' function?
 render_text is the text version meaning it doesn't use the Graphical User Interface. render() is using the graphical interface to simulate the system. That's the picture I see where the different cars are moving and it's showing me that the udacity car agent is getting either negative or positive rewards.</p>
 <p>In the planner.py Python file, will the 'next_waypoint() function consider the North-South or East-West direction first?
@@ -13511,7 +13515,7 @@ kiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiT1Pv8f3E+G66KT/KkAAAAASUVORK5CYII=
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>**Answer:</p>
-<p>The driving agent is making bad decisions 85% to 90% of the time. The rate of reliablity starts at around 10% and peaks at around 20% and goes down dependent on the trial number, but the average is generally around 10%. The relative frequency of major accidents is 11.12% after 20 trials and the rate of minor accidents is 5.56%. This is fairly high and is unacceptable in real life. If you have major accidents, you will increasingly have less trust from the passenger.</p>
+<p>The driving agent is making bad decisions 0.3846 of the time with regard to safety. The reliability is horrible. The rate of reliablity starts at around 10% and peaks at around 20% and goes down dependent on the trial number, but the average is generally around 10%. The relative frequency of major accidents is 11.12% after 20 trials and the rate of minor accidents is 5.56%. This is fairly high and is unacceptable in real life. If you have major accidents, you will increasingly have less trust from the passenger.</p>
 <p>The rate of reliability makes sense. In fact, I would expect it to be even higher but given that the decisions are completely random. It makes sense.</p>
 <p>As the Trials increase, the reward per action decreases to -8 and this corresponds to the major and minor accidents, which indicates it's being penalized. As for whether the severity is enough, it's definitely not enough. The major accidents should penalize it serverly and even minor accidents should have a moderate level of penalty. I would say the violations are minor, but accidents are definitely not good.</p>
 <p>The outcome of the results changes. The reliability has a range of 10% to 20% and there are corresponding other range movement in the other charts. This is moderate movement.</p>
@@ -13569,7 +13573,8 @@ kiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiT1Pv8f3E+G66KT/KkAAAAASUVORK5CYII=
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>**Answer:</p>
-<p>The features available to the agent for learning safety and efficiency are your input data relative to your waypoint data. Put another way, you should take into account the light and your surrounding vehicles to know how you should proceed instead of doing things randomly, which is what it's doing right now. So, for safety left, right, and oncoming. For efficiency, waypoint and deadline to determine if this is the optimal solution to arrive at the waypoint. These features are appropriate because you are modeling environment and how fast you are approaching the destination. It's a tradeoff between efficiency to the destination and safety. The features for safety doesn't have to consider deadline or waypoint because the main labels that you're considering is minor accident, major accident, minor violation, and major violation. As for efficiency, you really just care about your velocity getting to your destination relative to your optimal velocity. Meaning velocity as a vector, not just the scalar portion of velocity.</p>
+<p>The features available to the agent for learning safety and efficiency are your input data relative to your waypoint data. Put another way, you should take into account the light and your surrounding vehicles to know how you should proceed instead of doing things randomly, which is what it's doing right now. So, for safety left, right, and oncoming. For efficiency, waypoint to determine if this is the optimal solution to arrive at the waypoint. This feature is appropriate because you are modeling environment and how fast you are approaching the destination. It's a tradeoff between efficiency and safety. The features for safety doesn't have to consider deadline or waypoint because the main labels that you're considering is minor accident, major accident, minor violation, and major violation. As for efficiency, you really just care about your velocity getting to your destination relative to your optimal velocity. Meaning velocity as a vector, not just the scalar portion of velocity.</p>
+<p>The deadline was omitted primarily because the deadline variable is independent of waypoint and sensing the environment. If you learned deadline for a given set of variables that you're sensing, you can have critical errors as you're driving because you are learning for a variable that may not even have any impact on the reward. For example, if you are late for a meeting, then you learn to skip red lights. That may not be the optimal policy for a given person to skip red lights and get into an accident. Also this feature is an extra engineered feature that is not part of the decision making process for a given vehicle.</p>
 <p>**</p>
 
 </div>
@@ -13604,9 +13609,10 @@ kiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiT1Pv8f3E+G66KT/KkAAAAASUVORK5CYII=
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>**Answer:</p>
-<p>Given: ('is_raining', 'is_foggy', 'is_red_light', 'turn_left', 'no_traffic', 'previous_turn_left', 'time_of_day').</p>
-<p>There would be 2 possiblity for every parameter except for time_of_day and assuming that you have 1440 minutes for a given day. You will have 2<em>2</em>2<em>2</em>2<em>2</em>1440 = 92160 possible states. If you consider seconds, you can have an 2<em>2</em>2<em>2</em>2<em>2</em>86400 = 5,529,600 possible states. Given the environment it is possible to simulate but not within a reasonable amount of trials. The problem is that you're going to get into a lot of trials. 
-**</p>
+<p>Given: waypoint, inputs['light'], inputs['left'], inputs['right'], inputs['oncoming']</p>
+<p>There would be 4 different values of waypoint (forward, left, right). There would be 2 states (green, red) for lights. For Inputs['left'], there would be four states (forward, left, right, None). For oncoming, there would be four states (forward, left, right, None). For oncoming there would be four states (forward, left, right, None). Overall the number of states would be 3 <em> 2 </em> 4 <em> 4 </em> 4 = 384 states.</p>
+<p>Given what I know about the states 384 states is possible to simulate in a reasonable amount of time. Assuming even 3 visits for 384 states, it would be 1152 different combinations that you have to try to visit all states 3 different times. The other dummy agents (100) is theoretically randomly distributed and if you have more agents, you can have a more representative states to learn whereas if you had very few agents, you wouldn't be able to learn all the states.</p>
+<p>**</p>
 
 </div>
 </div>
@@ -15463,7 +15469,7 @@ $$ \epsilon = a^t, \textrm{for } 0 < a < 1 \hspace{50px}\epsilon = \frac{1}{t^2}
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Load the &#39;sim_improved-learning&#39; file from the improved Q-Learning simulation</span>
@@ -18112,7 +18118,14 @@ AAAA4P/hHkAk9U89OtKBAAAAAElFTkSuQmCC
 My decaying function was relatively simple. e = 10/t where e has a maximum value of 1. This guaranteed that in the beginning there will be maximum exploration. I experimented with different decaying functions, but the main thing was the trial length and the relative decaying function with the learning function. Not necessarily the actual decaying function.</p>
 <p>Approximate training trials were 1000.</p>
 <p>The epsilon tolerance was 0.01. It was lower to allow for more trials. The alpha was alpha = 13/t. The learning rate was always slightly higher than epislon and decayed slower than epislon. I learned that learning rate had to be similar but higher than epsilon. I tried 1/t, constants, linear decay, cos(x), e^-t, e^-at. The decaying function itself didn't matter as much as the trial length.</p>
-<p>This is a dramatic difference. A+ and A+ vs F and F.</p>
+<p>This is a dramatic difference. A+ and A+ vs F and F. I adjusted the epsilon values, rewards, and alpha. Conceptually I increased the amount of trials that the learner needs to use and then Q = alpha <em> reward + (1-alpha) </em> Q. Basically, the general idea is that I realized reliability was underweighted in terms of rewards and so in order.</p>
+<ul>
+<li>High reward - correct waypoint and no accidents </li>
+<li>low penalty - incorrect waypoint and no accident</li>
+<li>medium penalty - violation</li>
+<li>high penalty - accident</li>
+</ul>
+<p>So, as I tried different decaying functions, I realized that there needed to be very high component of exploration upfront and I would have to have it fill up the Q. Therefore I used a function 10/t that caps at 1 for epsilon, which would allow me to fill up and also learn constantly with a high alpha. As I adjusted to high the rewards for violation and accident, my safety scores went up, and the major improvement was when I dramatically improved the reward for correct waypoint and no accident, which increased the reliability from C to A+. There were function tuning that I had to do to adjust safety and so I had to tune the decay of epislon vs learning so that the agent can learn what to do.</p>
 <p>Yes, this is an example of an appropriate policy.</p>
 <p>I'm very happy with the safety and reliabililty ratings of the Smartcab.</p>
 <p>**</p>
@@ -18149,20 +18162,55 @@ My decaying function was relatively simple. e = 10/t where e has a maximum value
 <p>Few examples include always prioritizing Safety first, but penalizing if you're not going in the right direction. You want to heavily penalize major and minor accidents, moderatly punish violations, and minor punish correct safety but wrong waypoint driving behavior.</p>
 <p>For example:</p>
 <ol>
-<li>State: {'inputs': {'light': 'red', 'oncoming': 'left', 'right': None, 'left': None}, 'waypoint': 'right'}</li>
-<li><p>Optimal action: right</p>
+<li>State: {'inputs': {'light': 'green', 'oncoming': None, 'right': None, 'left': 'left'}, 'waypoint': 'forward'}</li>
+<li>Optimal action: forward</li>
+<li>Reward for action:   7.89427966956</li>
+<li>Previous Q value:  7.85786192678</li>
+<li>Previous Q array:  {'forward': 7.85786192677519, 'right': -1.0794273607060672, 'left': -1.1046232072299258, None: -3.7073481288890515}</li>
+<li>Current location:  (1, 4)</li>
+<li>Destination location:  (0, 1)</li>
+<li>Distance from location:  4</li>
+<li>Deadline:  17</li>
+<li>New Q value:  7.85786192678</li>
+<li>New Q array:  {'forward': 7.85786192677519, 'right': -1.0794273607060672, 'left': -1.1046232072299258, None: -3.7073481288890515}</li>
+</ol>
+<ol>
+<li>Previous state:   {'inputs': {'light': 'red', 'oncoming': None, 'right': None, 'left': None}, 'waypoint': 'right'}</li>
+<li>Chosen action:  right</li>
+<li>Last violation:  Correct move to waypoint</li>
+<li>Reward for action:   8.07425252174</li>
+<li>Previous Q value:  8.0305790905</li>
+<li>Previous Q array:  {'forward': -19.892054310368223, 'right': 8.03057909050184, 'left': -19.51505610564366, None: -0.6763278201927055}</li>
+<li>Agent epsilon 0 alpha 0 </li>
+<li>Current location:  (1, 3)</li>
+<li>Destination location:  (0, 1)</li>
+<li>Distance from location:  3</li>
+<li>Deadline:  18</li>
+<li>New Q value:  8.0305790905</li>
+<li>New Q array:  {'forward': -19.892054310368223, 'right': 8.03057909050184, 'left': -19.51505610564366, None: -0.6763278201927055}</li>
+</ol>
+<ol>
+<li>Previous state:   {'inputs': {'light': 'green', 'oncoming': None, 'right': None, 'left': 'forward'}, 'waypoint': 'forward'}</li>
+<li>Chosen action:  forward</li>
+<li>Last violation:  Correct move to waypoint</li>
+<li>Reward for action:   8.49505127891</li>
+<li>Previous Q value:  7.95228342279</li>
+<li>Previous Q array:  {'forward': 7.9522834227925285, 'right': 0.0, 'left': 0.0, None: -1.6223139317160276}</li>
+<li>Agent epsilon 0 alpha 0 </li>
+<li>Current location:  (1, 2)</li>
+<li>Destination location:  (1, 0)</li>
+<li>Distance from location:  2</li>
+<li>Deadline:  19</li>
+<li>New Q value:  7.95228342279</li>
+<li><p>New Q array:  {'forward': 7.9522834227925285, 'right': 0.0, 'left': 0.0, None: -1.6223139317160276}</p>
 </li>
-<li><p>State:   {'inputs': {'light': 'green', 'oncoming': None, 'right': None, 'left': 'forward'}, 'waypoint': 'forward'}</p>
+<li><p>Previous state:   {'inputs': {'light': 'red', 'oncoming': None, 'right': None, 'left': 'None'}, 'waypoint': 'forward'}</p>
 </li>
-<li><p>Optimal action: forward</p>
-</li>
-<li><p>State:  {'inputs': {'light': 'red', 'oncoming': None, 'right': None, 'left': None}, 'waypoint': 'forward'}</p>
-</li>
-<li>Optimal action: forward </li>
+<li>Chosen action:  forward</li>
 </ol>
 <p>These are all different behaviors that a human would intuitively understand and be able to weight, but a human cannot.</p>
-<p>For all of these previous states, the policy is not the highest value. Currently there aren't any states where the policy is that different. In the 3rd example, the light is red and the car drove forward. It's correct in following the waypoint and that there wasn't any cars, but it was an incorrect policy.</p>
-<p>Below is an example of a recorded state. If the light is green and there isn't any other cars in the front right, then you should go forward. There is a car on the left, but that person has a red light.</p>
+<p>For all of these previous states, the policy is not the highest value. The suboptimal state is the very last example, where it has the color red, there are no agents on any of the three roads and it chose to move forward. That is the wrong choice. It didn't cause an accident but it should've stopped.</p>
+<p>Below is an example of a recorded state. If the light is green and there isn't any other cars in the front , then you should go forward. There is a car on the left, but that person has a red light.</p>
 <ol>
 <li>State:  {'inputs': {'light': 'green', 'oncoming': None, 'right': None, 'left': 'forward'}, 'waypoint': 'forward'}</li>
 <li>Optimal action: forward </li>
@@ -18200,9 +18248,9 @@ My decaying function was relatively simple. e = 10/t where e has a maximum value
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>**Answer:</p>
-<p>One characteristic is waypoint. If you overly weight going toward the goal and the waypoint then you will bias the safety as the balance between reliability and safety will be out of balance. More specifically, the more you weigh the goal the more it will over ride minor violations to get at the goal at all cost.</p>
-<p>The other characteristic has to do with the Smartcab. If iterate with future versions of Q_t+1 You will get a state dependent reward system, where the smart cab gets rewards based on its current location. You will eventually remember rewards and Q values for every part of the grid whereas you want the smart cab to only take into consideration the inputs and the values. 
-**</p>
+<p>One characteristic has to do with the Smartcab. If iterate with future versions of Q_t+1 You will get a state dependent reward system, where the smart cab gets rewards based on its current location. You will eventually remember rewards and Q values for every part of the grid whereas you want the smart cab to only take into consideration the inputs and the values. The smart cab is only sensing part of the environment and doesn't take into account the entire grid, nor it current location. It's state independent therefore adding a future state iteration will add state and confuse the smart cab.</p>
+<p>The other characteristic is the randomly generated start and end locations. If you had future rewards, you would learn location dependent rewards because you are learning about the entire grid. However, then the game changes when the end destination changes location. So, what you are learning Q t+1 and Q_up, Q_right, Q_left is completely wrong. Therefore you are constantly learning something that will be invalidated in the next iteration.</p>
+<p>**</p>
 
 </div>
 </div>

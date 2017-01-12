@@ -62,6 +62,15 @@ class LearningAgent(Agent):
             # print "Ending alpha ", self.alpha
             # print "Ending epislon", self.epsilon
 
+            # try this:
+            # self.trial_count = self.trial_count + 1
+            # self.epsilon = 1 - (1/(1+math.exp(-k*self.alpha*(self.trial_count-t0))))
+            # Where k determines how fast the agent performs the transition between random learning
+            # and choosing the max q-value. k also determines how fast the sigmoid function converges to 0.
+            # The t0 value was also chosen empirically; by using the sigmoid function, we can make sure that
+            # the agent would have sufficient time to explore the environment completely randomly, in order also
+            # to fill the Q-value matrix with the correct values.
+
             if self.epsilon > 1:
                 self.epsilon = 1
             if self.alpha > 1:
@@ -261,7 +270,7 @@ def run():
     # Flags:
     #   tolerance  - epsilon tolerance before beginning testing, default is 0.05 
     #   n_test     - discrete number of testing trials to perform, default is 0
-    sim.run(tolerance=0.01, n_test=50)
+    sim.run(tolerance=0.01, n_test=10)
 
 
 if __name__ == '__main__':
